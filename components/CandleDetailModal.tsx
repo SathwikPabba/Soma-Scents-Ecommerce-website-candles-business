@@ -76,7 +76,7 @@ export default function CandleDetailModal({
               )}
 
               <img
-                src={candle.images ? `/public${candle.images[currentImageIndex]}` : (`/public${candle.image}` || "/placeholder.svg")}
+                src={candle.images ? candle.images[currentImageIndex] : (candle.image || "/placeholder.svg")}
                 alt={`${candle.name} - Image ${currentImageIndex + 1}`}
                 className={`w-full h-full object-contain transition-opacity duration-300 ${
                   imageLoaded ? "opacity-100" : "opacity-0"
@@ -143,7 +143,7 @@ export default function CandleDetailModal({
                     className={`relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0 border-2 ${currentImageIndex === index ? 'border-orange-500' : 'border-transparent'}`}
                   >
                     <img 
-                      src={`/public${img}`} 
+                      src={img} 
                       alt={`${candle.name} thumbnail ${index + 1}`} 
                       className="w-full h-full object-contain"
                     />

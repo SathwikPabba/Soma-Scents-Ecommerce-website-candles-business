@@ -145,7 +145,7 @@ export default function HeroSection() {
                   {slideImages.map((image, index) => (
                     <img
                       key={index}
-                      src={`/public${image}`}
+                      src={image}
                       alt={`SomaScents Candles - Slide ${index + 1}`}
                       className={`absolute inset-0 w-full h-full object-cover rounded-full p-8 transition-opacity duration-1000 ${currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                     />
