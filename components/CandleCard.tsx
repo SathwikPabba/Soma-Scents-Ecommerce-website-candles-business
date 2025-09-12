@@ -46,7 +46,7 @@ export default function CandleCard({
 
         <img
           src={imageError ? "/placeholder.svg?height=280&width=280" : 
-               isHovering && candle.images && candle.images.length > 1 ? candle.images[1] : candle.image}
+               isHovering && candle.images && candle.images.length > 1 ? `/public${candle.images[1]}` : `/public${candle.image}`}
           alt={candle.name}
           className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
             imageLoaded ? "opacity-100" : "opacity-0"
