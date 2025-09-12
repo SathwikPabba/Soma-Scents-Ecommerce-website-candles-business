@@ -191,9 +191,16 @@ export const candlesData: Candle[] = [
   },
   {
     id: "13",
-    name: "Scented Floating Daisy Candles",
+    name: "Jar of Hearts",
     price: 299,
-    image: "/scented-diya-candle.jpg",
+    image: "/jar-of-hearts-main.jpg",
+    images: [
+      "/jar-of-hearts1.jpg",
+      "/jar-of-hearts2.jpg",
+      "/jar-of-hearts3.jpg",
+      "/jar-of-hearts4.jpg",
+      "/jar-of-hearts5.jpg",
+    ],
     description:
       "A pack of six floating candles with a floral daisy fragrance, perfect for creating a serene and elegant ambiance.",
     scent: "Floral",
