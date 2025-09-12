@@ -4,7 +4,7 @@ import { useState } from "react"
 import { ArrowUp, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import FavoritesModal from "./FavoritesModal"
-import type { CartItem } from "@/lib/data"
+import type { CartItem } from "@/public/data"
 
 interface QuickActionsProps {
   favorites: string[]

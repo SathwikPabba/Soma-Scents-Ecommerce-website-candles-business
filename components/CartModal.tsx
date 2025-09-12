@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import type { CartItem } from "@/lib/data"
+import type { CartItem } from "@/public/data"
 
 interface CartModalProps {
   cart: CartItem[]

@@ -2,8 +2,8 @@
 
 import { Heart, X, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { candlesData } from "@/lib/data"
-import type { CartItem } from "@/lib/data"
+import { candlesData } from "@/public/data"
+import type { CartItem } from "@/public/data"
 
 interface FavoritesModalProps {
   favorites: string[]

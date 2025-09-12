@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { Search, Heart, ShoppingCart, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { candlesData } from "@/lib/data"
+import { candlesData } from "@/public/data"
 
 interface HeaderProps {
   cartCount: number

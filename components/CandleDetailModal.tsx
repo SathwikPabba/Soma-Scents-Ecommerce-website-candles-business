@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { X, Heart, ShoppingCart, Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { candlesData } from "@/lib/data"
+import { candlesData } from "@/public/data"
 
 interface CandleDetailModalProps {
   candleId: string

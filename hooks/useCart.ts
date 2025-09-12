@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import type { Candle, CartItem } from "@/lib/data"
+import type { Candle, CartItem } from "@/public/data"
 
 export function useCart() {
   const [cart, setCart] = useState<CartItem[]>([])

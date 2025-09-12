@@ -3,7 +3,7 @@
 import { useState } from "react"
 import CandleCard from "./CandleCard"
 import { Button } from "@/components/ui/button"
-import type { Candle, CartItem } from "@/lib/data"
+import type { Candle, CartItem } from "@/public/data"
 
 interface CandleCollectionSectionProps {
   candles: Candle[]

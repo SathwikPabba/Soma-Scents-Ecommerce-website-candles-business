@@ -1,8 +1,8 @@
 "use client"
 
 import CandleCard from "./CandleCard"
-import { bestSellersData } from "@/lib/data"
-import type { CartItem } from "@/lib/data"
+import { bestSellersData } from "@/public/data"
+import type { CartItem } from "@/public/data"
 
 interface BestSellersSectionProps {
   onCandleClick: (candleId: string) => void

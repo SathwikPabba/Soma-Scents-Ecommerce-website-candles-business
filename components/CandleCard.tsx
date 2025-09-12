@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Heart, ShoppingCart, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import type { Candle } from "@/lib/data"
+import type { Candle } from "@/public/data"
 
 interface CandleCardProps {
   candle: Candle
