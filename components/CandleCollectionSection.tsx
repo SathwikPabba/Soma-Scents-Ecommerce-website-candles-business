@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import CandleCard from "./CandleCard"
 import { Button } from "@/components/ui/button"
 import type { Candle, CartItem } from "@/public/data"
+import { motion } from "framer-motion"
 
 interface CandleCollectionSectionProps {
   candles: Candle[]
@@ -85,16 +86,30 @@ export default function CandleCollectionSection({
         {visibleCandles.length > 0 ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-              {visibleCandles.map((candle) => (
-                <CandleCard
+              {visibleCandles.map((candle, index) => (
+                <motion.div
                   key={candle.id}
-                  candle={candle}
-                  onCandleClick={onCandleClick}
-                  onAddToCart={onAddToCart}
-                  onToggleFavorite={onToggleFavorite}
-                  isFavorite={favorites.includes(candle.id)}
-                  isInCart={cart.some((item) => item.id === candle.id)}
-                />
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    y: 0,
+                    transition: { 
+                      duration: 0.5, 
+                      delay: index * 0.1 % 0.8, // Creates a wave effect by staggering based on index
+                      ease: [0.25, 0.1, 0.25, 1.0] // Smooth easing function
+                    }
+                  }}
+                  viewport={{ once: true, margin: "-100px" }}
+                >
+                  <CandleCard
+                    candle={candle}
+                    onCandleClick={onCandleClick}
+                    onAddToCart={onAddToCart}
+                    onToggleFavorite={onToggleFavorite}
+                    isFavorite={favorites.includes(candle.id)}
+                    isInCart={cart.some((item) => item.id === candle.id)}
+                  />
+                </motion.div>
               ))}
             </div>
 

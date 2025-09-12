@@ -24,13 +24,18 @@ export default function CandleCard({
 }: CandleCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
+  const [isHovering, setIsHovering] = useState(false)
 
   const discount = candle.originalPrice
     ? Math.round(((candle.originalPrice - candle.price) / candle.originalPrice) * 100)
     : 0
 
   return (
-    <div className="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+    <div 
+      className="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-gray-50">
         {!imageLoaded && !imageError && (
@@ -40,7 +45,8 @@ export default function CandleCard({
         )}
 
         <img
-          src={imageError ? "/placeholder.svg?height=280&width=280" : candle.image}
+          src={imageError ? "/placeholder.svg?height=280&width=280" : 
+               isHovering && candle.images && candle.images.length > 1 ? candle.images[1] : candle.image}
           alt={candle.name}
           className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
             imageLoaded ? "opacity-100" : "opacity-0"
