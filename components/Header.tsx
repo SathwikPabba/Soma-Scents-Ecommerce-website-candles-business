@@ -10,11 +10,12 @@ interface HeaderProps {
   cartCount: number
   favoritesCount: number
   onCartClick: () => void
+  onFavoritesClick: () => void
   onSearchChange: (query: string) => void
   searchQuery: string
 }
 
-export default function Header({ cartCount, favoritesCount, onCartClick, onSearchChange, searchQuery }: HeaderProps) {
+export default function Header({ cartCount, favoritesCount, onCartClick, onFavoritesClick, onSearchChange, searchQuery }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchFocused, setIsSearchFocused] = useState(false)
   const [searchSuggestions, setSearchSuggestions] = useState<typeof candlesData>([])
@@ -226,7 +227,7 @@ export default function Header({ cartCount, favoritesCount, onCartClick, onSearc
               </div>
 
               {/* Favorites */}
-              <Button variant="ghost" size="sm" className="relative p-2">
+              <Button variant="ghost" size="sm" onClick={onFavoritesClick} className="relative p-2">
                 <Heart className="w-5 h-5 text-gray-600" />
                 {favoritesCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -313,7 +314,11 @@ export default function Header({ cartCount, favoritesCount, onCartClick, onSearc
 
               {/* Mobile Actions */}
               <div className="flex space-x-4 pt-4 border-t border-gray-200">
-                <Button variant="outline" className="flex-1 flex items-center justify-center space-x-2 bg-transparent">
+                <Button 
+                  variant="outline" 
+                  onClick={onFavoritesClick}
+                  className="flex-1 flex items-center justify-center space-x-2 bg-transparent"
+                >
                   <Heart className="w-4 h-4" />
                   <span>Favorites ({favoritesCount})</span>
                 </Button>

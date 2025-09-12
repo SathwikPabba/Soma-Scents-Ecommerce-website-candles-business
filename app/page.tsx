@@ -5,11 +5,13 @@ import Header from "@/components/Header"
 import HeroSection from "@/components/HeroSection"
 import BestSellersSection from "@/components/BestSellersSection"
 import CandleCollectionSection from "@/components/CandleCollectionSection"
+import ShopByCategory from "@/components/ShopByCategory"
 import AboutSection from "@/components/AboutSection"
 import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
 import CartModal from "@/components/CartModal"
 import CandleDetailModal from "@/components/CandleDetailModal"
+import FavoritesModal from "@/components/FavoritesModal"
 import Toast from "@/components/Toast"
 import LoadingSpinner from "@/components/LoadingSpinner"
 import QuickActions from "@/components/QuickActions"
@@ -21,19 +23,21 @@ import { useToast } from "@/hooks/useToast"
 export default function HomePage() {
   const [selectedCandleId, setSelectedCandleId] = useState<string | null>(null)
   const [isCartModalOpen, setIsCartModalOpen] = useState(false)
+  const [isFavoritesModalOpen, setIsFavoritesModalOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [isLoading, setIsLoading] = useState(true)
+  const [selectedCategory, setSelectedCategory] = useState("")
 
   const { cart, addToCart, removeFromCart, updateQuantity, clearCart } = useCart()
   const { favorites, toggleFavorite } = useFavorites()
   const { toast, showToast, hideToast } = useToast()
 
-  // Filter candles based on search query
+  // Filter candles based on search query only (category filtering now happens on category page)
   const filteredCandles = candlesData.filter(
-    (candle) =>
+    (candle) => 
       candle.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       candle.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      candle.scent.toLowerCase().includes(searchQuery.toLowerCase()),
+      candle.scent.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
   useEffect(() => {
@@ -73,6 +77,7 @@ export default function HomePage() {
         cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
         favoritesCount={favorites.length}
         onCartClick={() => setIsCartModalOpen(true)}
+        onFavoritesClick={() => setIsFavoritesModalOpen(true)}
         onSearchChange={setSearchQuery}
         searchQuery={searchQuery}
       />
@@ -93,6 +98,9 @@ export default function HomePage() {
           onToggleFavorite={handleToggleFavorite}
           favorites={favorites}
           cart={cart}
+        />
+        <ShopByCategory 
+          onCategorySelect={setSelectedCategory} 
         />
         <AboutSection />
         <ContactSection />
@@ -129,6 +137,17 @@ export default function HomePage() {
           onToggleFavorite={handleToggleFavorite}
           isFavorite={favorites.includes(selectedCandleId)}
           isInCart={cart.some((item) => item.id === selectedCandleId)}
+        />
+      )}
+      
+      {isFavoritesModalOpen && (
+        <FavoritesModal
+          favorites={favorites}
+          cart={cart}
+          onClose={() => setIsFavoritesModalOpen(false)}
+          onToggleFavorite={handleToggleFavorite}
+          onAddToCart={handleAddToCart}
+          onCandleClick={handleCandleClick}
         />
       )}
 
