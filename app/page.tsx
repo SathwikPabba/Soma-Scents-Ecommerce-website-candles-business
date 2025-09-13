@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Header from "@/components/Header"
 import HeroSection from "@/components/HeroSection"
+import CoffeeLaunchSection from "@/components/CoffeeLaunchSection"
 import BestSellersSection from "@/components/BestSellersSection"
 import CandleCollectionSection from "@/components/CandleCollectionSection"
 import CreativeFeature from "@/components/CreativeFeature"
@@ -84,6 +85,7 @@ export default function HomePage() {
 
       <main>
         <HeroSection />
+        <CoffeeLaunchSection />
         <BestSellersSection
           onCandleClick={handleCandleClick}
           onAddToCart={handleAddToCart}
@@ -138,6 +140,17 @@ export default function HomePage() {
           onToggleFavorite={handleToggleFavorite}
           isFavorite={favorites.includes(selectedCandleId)}
           isInCart={cart.some((item) => item.id === selectedCandleId)}
+        />
+      )}
+
+      {isFavoritesModalOpen && (
+        <FavoritesModal
+          favorites={favorites}
+          cart={cart}
+          onClose={() => setIsFavoritesModalOpen(false)}
+          onToggleFavorite={handleToggleFavorite}
+          onAddToCart={handleAddToCart}
+          onCandleClick={handleCandleClick}
         />
       )}
 
