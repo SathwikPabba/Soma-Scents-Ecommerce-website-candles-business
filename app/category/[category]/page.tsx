@@ -15,6 +15,7 @@ import FavoritesModal from "@/components/FavoritesModal"
 import LoadingSpinner from "@/components/LoadingSpinner"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function CategoryPage() {
   const params = useParams()
@@ -134,16 +135,30 @@ export default function CategoryPage() {
           {/* Candles Grid */}
           {sortedCandles.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-              {sortedCandles.map((candle) => (
-                <CandleCard
+              {sortedCandles.map((candle, index) => (
+                <motion.div
                   key={candle.id}
-                  candle={candle}
-                  onCandleClick={handleCandleClick}
-                  onAddToCart={handleAddToCart}
-                  onToggleFavorite={handleToggleFavorite}
-                  isFavorite={favorites.includes(candle.id)}
-                  isInCart={cart.some((item) => item.id === candle.id)}
-                />
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    y: 0,
+                    transition: { 
+                      duration: 0.5, 
+                      delay: index * 0.1 % 0.8, // Creates a wave effect by staggering based on index
+                      ease: [0.25, 0.1, 0.25, 1.0] // Smooth easing function
+                    }
+                  }}
+                  viewport={{ once: true, margin: "-100px" }}
+                >
+                  <CandleCard
+                    candle={candle}
+                    onCandleClick={handleCandleClick}
+                    onAddToCart={handleAddToCart}
+                    onToggleFavorite={handleToggleFavorite}
+                    isFavorite={favorites.includes(candle.id)}
+                    isInCart={cart.some((item) => item.id === candle.id)}
+                  />
+                </motion.div>
               ))}
             </div>
           ) : (

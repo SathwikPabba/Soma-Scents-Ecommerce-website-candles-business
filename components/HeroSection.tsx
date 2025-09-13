@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sparkles, Gift, Flame, ChevronLeft, ChevronRight } from "lucide-react"
-import Image from "next/image"
 
 export default function HeroSection() {
   const [currentOffer, setCurrentOffer] = useState(0)

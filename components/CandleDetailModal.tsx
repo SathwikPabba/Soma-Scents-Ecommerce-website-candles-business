@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { X, Heart, ShoppingCart, Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import { candlesData } from "@/public/data"
 
 interface CandleDetailModalProps {
@@ -76,19 +75,14 @@ export default function CandleDetailModal({
                 </div>
               )}
 
-              <div className="relative w-full h-full">
-                <Image
-                  src={candle.images ? candle.images[currentImageIndex] : (candle.image || "/placeholder.svg")}
-                  alt={`${candle.name} - Image ${currentImageIndex + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                  className={`object-contain transition-opacity duration-300 ${
-                    imageLoaded ? "opacity-100" : "opacity-0"
-                  }`}
-                  onLoadingComplete={() => setImageLoaded(true)}
-                />
-              </div>
+              <img
+                src={candle.images ? candle.images[currentImageIndex] : (candle.image || "/placeholder.svg")}
+                alt={`${candle.name} - Image ${currentImageIndex + 1}`}
+                className={`w-full h-full object-contain transition-opacity duration-300 ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                onLoad={() => setImageLoaded(true)}
+              />
 
               {discount > 0 && (
                 <div className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">
