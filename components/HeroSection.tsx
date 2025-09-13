@@ -144,12 +144,16 @@ export default function HeroSection() {
                 {/* Slideshow Images */}
                 <div className="relative w-full h-full rounded-full overflow-hidden p-8">
                   {slideImages.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`SomaScents Candles - Slide ${index + 1}`}
-                      className={`absolute inset-0 w-full h-full object-cover rounded-full p-8 transition-opacity duration-1000 ${currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                    />
+                    <div key={index} className={`absolute inset-0 w-full h-full p-8 transition-opacity duration-1000 ${currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
+                      <Image
+                        src={image}
+                        alt={`SomaScents Candles - Slide ${index + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index === 0}
+                        className="object-cover rounded-full"
+                      />
+                    </div>
                   ))}
                   
                   {/* Slide Counter Removed */}

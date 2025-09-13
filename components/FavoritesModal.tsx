@@ -4,6 +4,7 @@ import { Heart, X, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { candlesData } from "@/public/data"
 import type { CartItem } from "@/public/data"
+import Image from "next/image"
 
 interface FavoritesModalProps {
   favorites: string[]
@@ -67,10 +68,12 @@ export default function FavoritesModal({
                     >
                       {/* Image */}
                       <div className="relative aspect-square bg-gray-50">
-                        <img
+                        <Image
                           src={candle.image || "/placeholder.svg"}
                           alt={candle.name}
-                          className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
                           onClick={() => {
                             onCandleClick(candle.id)
                             onClose()

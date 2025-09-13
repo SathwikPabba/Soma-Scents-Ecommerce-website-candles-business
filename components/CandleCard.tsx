@@ -45,14 +45,17 @@ export default function CandleCard({
           </div>
         )}
 
-        <img
-          src={imageError ? "/placeholder.svg?height=280&width=280" : 
+        <Image
+          src={imageError ? "/placeholder.svg" : 
                isHovering && candle.images && candle.images.length > 1 ? candle.images[1] : candle.image}
           alt={candle.name}
-          className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
+          className={`object-contain transition-all duration-300 group-hover:scale-105 ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
-          onLoad={() => setImageLoaded(true)}
+          onLoadingComplete={() => setImageLoaded(true)}
           onError={() => {
             setImageError(true)
             setImageLoaded(true)
