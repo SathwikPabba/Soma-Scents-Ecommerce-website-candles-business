@@ -157,16 +157,6 @@ export const candlesData: Candle[] = [
     scent: "Floral, Vanilla, Rose, Lavender",
   },
   {
-    id: "10",
-    name: "Scented Candles Bouquet",
-    price: 499,
-    originalPrice: 649,
-    image: "/Scented-Candles-Bouquet.jpg",
-    description:
-      "A heart-shaped tin candle with floral and rose notes, designed to add a touch of romance to any setting.",
-    scent: "Floral, Rose",
-  },
-  {
     id: "11",
     name: "Luxury Sinking Heart's Jar Candle",
     price: 299,
