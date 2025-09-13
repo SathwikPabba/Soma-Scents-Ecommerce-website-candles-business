@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import CandleCard from "./CandleCard"
 import { Button } from "@/components/ui/button"
 import type { Candle, CartItem } from "@/public/data"
@@ -90,16 +90,13 @@ export default function CandleCollectionSection({
                 <motion.div
                   key={candle.id}
                   initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ 
-                    opacity: 1, 
-                    y: 0,
-                    transition: { 
-                      duration: 0.5, 
-                      delay: index * 0.1 % 0.8, // Creates a wave effect by staggering based on index
-                      ease: [0.25, 0.1, 0.25, 1.0] // Smooth easing function
-                    }
-                  }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: (index % 4) * 0.1 + Math.floor(index / 4) * 0.05, // Creates a wave effect by position
+                    ease: "easeOut" 
+                  }}
                 >
                   <CandleCard
                     candle={candle}

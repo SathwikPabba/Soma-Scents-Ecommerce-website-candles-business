@@ -36,10 +36,6 @@ export function useCart() {
   }
 
   const removeFromCart = (candleId: string) => {
-    if (candleId === "all") {
-      clearCart();
-      return;
-    }
     setCart((prevCart) => prevCart.filter((item) => item.id !== candleId))
   }
 
