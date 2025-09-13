@@ -129,11 +129,9 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
                   <p className="text-gray-600">
-                    SomaScents Studio
+                    SomaScents
                     <br />
-                    123 Fragrance Lane
-                    <br />
-                    Mumbai, Maharashtra 400001
+                    Mehdipatnam
                   </p>
                 </div>
               </div>
@@ -144,7 +142,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
-                  <p className="text-gray-600">+91 74167 78158</p>
+                  <p className="text-gray-600">+91 7416778158</p>
                 </div>
               </div>
 
@@ -154,23 +152,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                  <p className="text-gray-600">hello@somascents.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-orange-600" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Business Hours</h4>
-                  <p className="text-gray-600">
-                    Monday - Friday: 9:00 AM - 6:00 PM
-                    <br />
-                    Saturday: 10:00 AM - 4:00 PM
-                    <br />
-                    Sunday: Closed
-                  </p>
+                  <p className="text-gray-600">somascents5@gmail.com</p>
                 </div>
               </div>
             </div>
