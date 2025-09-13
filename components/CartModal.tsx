@@ -4,6 +4,7 @@ import { useState } from "react"
 import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import type { CartItem } from "@/public/data"
+import CheckoutForm from "./CheckoutForm"
 
 interface CartModalProps {
   cart: CartItem[]
@@ -15,19 +16,13 @@ interface CartModalProps {
 
 export default function CartModal({ cart, onClose, onUpdateQuantity, onRemoveItem, onClearCart }: CartModalProps) {
   const [isCheckingOut, setIsCheckingOut] = useState(false)
+  const [showCheckoutForm, setShowCheckoutForm] = useState(false)
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
 
   const handleCheckout = () => {
-    setIsCheckingOut(true)
-    // Simulate checkout process
-    setTimeout(() => {
-      alert("Thank you for your order! We'll contact you soon.")
-      onClearCart()
-      onClose()
-      setIsCheckingOut(false)
-    }, 2000)
+    setShowCheckoutForm(true)
   }
 
   return (
@@ -130,35 +125,33 @@ export default function CartModal({ cart, onClose, onUpdateQuantity, onRemoveIte
           )}
         </div>
 
-        {/* Footer */}
+        {/* Checkout Form or Footer */}
         {cart.length > 0 && (
-          <div className="border-t border-gray-200 p-6 space-y-4">
-            {/* Total */}
-            <div className="flex justify-between items-center text-lg font-semibold">
-              <span>Total:</span>
-              <span className="text-orange-600">₹{totalPrice}</span>
-            </div>
-
-            {/* Checkout Button */}
-            <Button
-              onClick={handleCheckout}
-              disabled={isCheckingOut}
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3"
-            >
-              {isCheckingOut ? (
-                <div className="flex items-center justify-center space-x-2">
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Processing...</span>
+          <div className="border-t border-gray-200">
+            {showCheckoutForm ? (
+              <CheckoutForm cart={cart} onClose={onClose} onClearCart={onClearCart} />
+            ) : (
+              <div className="p-6 space-y-4">
+                {/* Total */}
+                <div className="flex justify-between items-center text-lg font-semibold">
+                  <span>Total:</span>
+                  <span className="text-orange-600">₹{totalPrice}</span>
                 </div>
-              ) : (
-                `Checkout (₹${totalPrice})`
-              )}
-            </Button>
 
-            {/* Continue Shopping */}
-            <Button variant="outline" onClick={onClose} className="w-full bg-transparent">
-              Continue Shopping
-            </Button>
+                {/* Checkout Button */}
+                <Button
+                  onClick={handleCheckout}
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3"
+                >
+                  {`Checkout (₹${totalPrice})`}
+                </Button>
+
+                {/* Continue Shopping */}
+                <Button variant="outline" onClick={onClose} className="w-full bg-transparent">
+                  Continue Shopping
+                </Button>
+              </div>
+            )}
           </div>
         )}
       </div>
