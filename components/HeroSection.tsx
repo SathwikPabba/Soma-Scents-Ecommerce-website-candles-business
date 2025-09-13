@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sparkles, Gift, Flame, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
+import PromotionalBanner from "./PromotionalBanner"
 
 export default function HeroSection() {
   const [currentOffer, setCurrentOffer] = useState(0)
@@ -48,17 +49,15 @@ export default function HeroSection() {
 
   return (
     <>
-      {/* Offer Banner */}
-      <div className="bg-gradient-to-r from-orange-500 to-amber-500 text-white py-3 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse" />
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center space-x-2">
-            <Sparkles className="w-4 h-4 animate-pulse" />
-            <span className="font-medium text-sm md:text-base">{offers[currentOffer]}</span>
-            <Sparkles className="w-4 h-4 animate-pulse" />
-          </div>
-        </div>
-      </div>
+      {/* Dussehra Promotional Banner */}
+      <PromotionalBanner 
+        title="Dussehra Special Offers"
+        startDate="October 22nd"
+        discountPercentage={30}
+        collectionName="Festival Collection"
+        actionText="Shop Now"
+        bgColorClass="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400"
+      />
 
       {/* Hero Section */}
       <section id="hero-section" className="relative bg-white min-h-[80vh] flex items-center">
