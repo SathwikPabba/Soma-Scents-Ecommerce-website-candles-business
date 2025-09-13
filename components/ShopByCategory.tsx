@@ -6,14 +6,12 @@ import { Button } from "@/components/ui/button"
 import { candlesData } from "@/public/data"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 
 interface CategoryProps {
   onCategorySelect: (category: string) => void
 }
 
 export default function ShopByCategory({ onCategorySelect }: CategoryProps) {
-  const router = useRouter()
   // Extract unique scent categories from candles data
   const [categories, setCategories] = useState<string[]>([])
   const [activeCategory, setActiveCategory] = useState<string>('')
@@ -51,8 +49,6 @@ export default function ShopByCategory({ onCategorySelect }: CategoryProps) {
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category)
     onCategorySelect(category)
-    // Navigate to category page
-    router.push(`/category/${encodeURIComponent(category)}`)
   }
 
   return (
@@ -105,9 +101,9 @@ export default function ShopByCategory({ onCategorySelect }: CategoryProps) {
             <Button 
               variant="outline" 
               className="border-orange-400 text-orange-600 hover:bg-orange-50"
-              asChild
+              onClick={() => onCategorySelect(activeCategory)}
             >
-              <Link href={`/category/${encodeURIComponent(activeCategory)}`}>View All</Link>
+              View All
             </Button>
           </div>
 

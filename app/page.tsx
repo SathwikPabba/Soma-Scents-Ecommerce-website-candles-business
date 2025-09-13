@@ -5,7 +5,7 @@ import Header from "@/components/Header"
 import HeroSection from "@/components/HeroSection"
 import BestSellersSection from "@/components/BestSellersSection"
 import CandleCollectionSection from "@/components/CandleCollectionSection"
-import ShopByCategory from "@/components/ShopByCategory"
+import CreativeFeature from "@/components/CreativeFeature"
 import AboutSection from "@/components/AboutSection"
 import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
@@ -99,8 +99,9 @@ export default function HomePage() {
           favorites={favorites}
           cart={cart}
         />
-        <ShopByCategory 
-          onCategorySelect={setSelectedCategory} 
+        <CreativeFeature 
+          onCategorySelect={setSelectedCategory}
+          onCandleClick={handleCandleClick}
         />
         <AboutSection />
         <ContactSection />
@@ -137,17 +138,6 @@ export default function HomePage() {
           onToggleFavorite={handleToggleFavorite}
           isFavorite={favorites.includes(selectedCandleId)}
           isInCart={cart.some((item) => item.id === selectedCandleId)}
-        />
-      )}
-      
-      {isFavoritesModalOpen && (
-        <FavoritesModal
-          favorites={favorites}
-          cart={cart}
-          onClose={() => setIsFavoritesModalOpen(false)}
-          onToggleFavorite={handleToggleFavorite}
-          onAddToCart={handleAddToCart}
-          onCandleClick={handleCandleClick}
         />
       )}
 
