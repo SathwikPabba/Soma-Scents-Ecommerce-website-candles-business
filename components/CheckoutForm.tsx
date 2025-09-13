@@ -173,7 +173,7 @@ Thank you for choosing Soma Scents for your home fragrance needs!
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 overflow-y-auto max-h-[70vh]">
       <h3 className="text-xl font-semibold text-gray-900 mb-4">Checkout</h3>
       <p className="text-gray-600 mb-6">
         Please fill in your details below. We'll contact you to confirm your order and process the payment.

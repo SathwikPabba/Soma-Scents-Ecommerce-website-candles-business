@@ -73,7 +73,13 @@ export default function Header({ cartCount, favoritesCount, onCartClick, onFavor
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <img src="/favicon.png" alt="SomaScents Logo" className="h-8 w-8 lg:h-10 lg:w-10" />
+              <div className="relative h-8 w-8 lg:h-10 lg:w-10 overflow-hidden rounded-full shadow-md border border-gray-100">
+                <img 
+                  src="/favicon.png" 
+                  alt="SomaScents Logo" 
+                  className="h-full w-full object-cover" 
+                />
+              </div>
               <h1 className="text-xl lg:text-2xl font-bold text-gray-900">
                 <span className="text-orange-600">Soma</span>Scents
               </h1>
