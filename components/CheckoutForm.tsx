@@ -57,10 +57,17 @@ ${cartItemsText}
 *Total Amount:* ₹${totalPrice}
       `.trim()
 
-      // Send WhatsApp notification to admin
-      const adminPhone = "7416778158"
-      const whatsappUrl = `https://wa.me/${adminPhone}?text=${encodeURIComponent(adminMessage)}`
-      window.open(whatsappUrl, "_blank")
+      // Send WhatsApp notification to admin using API
+      await fetch('/api/send-notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          recipientType: 'admin',
+          message: adminMessage
+        }),
+      })
       
       // Send confirmation message to user if they provided a phone number
       if (formData.phone) {
@@ -81,23 +88,38 @@ We'll be in touch shortly to confirm payment details and shipping information. I
 Thank you for choosing Soma Scents for your home fragrance needs!
         `.trim()
         
-        // This would typically be handled by a server-side API
-        // For now, we're just showing the confirmation in the UI
-        // In a production environment, you could send this via SMS or WhatsApp API
-        console.log("User confirmation message:", userMessage)
+        // Send confirmation to customer via API
+        await fetch('/api/send-notification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            recipientType: 'customer',
+            phoneNumber: formData.phone,
+            message: userMessage
+          }),
+        })
       }
 
       // Email notification implementation
-      // In a production environment, you would implement email notifications using a server-side API
-      // For example, you could use a serverless function or API route to send emails via services like:
-      // - SendGrid (https://sendgrid.com)
-      // - Mailchimp (https://mailchimp.com)
-      // - AWS SES (https://aws.amazon.com/ses)
-      // 
-      // Example implementation with Next.js API route would be:
-      // 1. Create an API route in pages/api/send-order-email.js
-      // 2. Use a library like nodemailer or a service SDK to send emails
-      // 3. Call this API from the frontend using fetch or axios
+      // You can also implement email notifications using the same pattern:
+      // 1. Create a new API route in app/api/send-email/route.ts
+      // 2. Use a library like nodemailer or a service SDK (SendGrid, Mailchimp, AWS SES)
+      // 3. Call the API from here using fetch
+      //
+      // Example:
+      // await fetch('/api/send-email', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     to: formData.email,
+      //     subject: 'Your Soma Scents Order Confirmation',
+      //     text: userMessage,
+      //   }),
+      // })
       //
       // For now, we're using WhatsApp as the primary notification method
 
