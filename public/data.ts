@@ -133,7 +133,7 @@ export const candlesData: Candle[] = [
   {
     id: "8",
     name: "Peony Jar Candle",
-    price: 200,
+    price: 199,
     originalPrice: 249,
     image: "/Peony-Jar-Candle-main.jpg",
     images: [
