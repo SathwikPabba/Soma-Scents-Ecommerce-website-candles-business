@@ -14,6 +14,8 @@ export interface CartItem extends Candle {
   quantity: number
 }
 
+//hello
+
 export interface BestSeller {
   id: string
   name: string
