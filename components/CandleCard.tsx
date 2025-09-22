@@ -27,8 +27,12 @@ export default function CandleCard({
   const [imageError, setImageError] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
 
+  // Apply Dussehra discount of 50 rupees
+  const dussehraPrice = candle.price - 50
+  
+  // Calculate discount percentage based on original price and Dussehra price
   const discount = candle.originalPrice
-    ? Math.round(((candle.originalPrice - candle.price) / candle.originalPrice) * 100)
+    ? Math.round(((candle.originalPrice - dussehraPrice) / candle.originalPrice) * 100)
     : 0
 
   return (
@@ -62,12 +66,10 @@ export default function CandleCard({
           }}
         />
 
-        {/* Discount Badge */}
-        {discount > 0 && (
-          <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-            {discount}% OFF
-          </div>
-        )}
+        {/* Dussehra Discount Badge */}
+        <div className="absolute top-3 left-3 bg-gradient-to-r from-red-600 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full border border-yellow-300 shadow-md transform -rotate-3">
+          Dussehra Special: {discount}% OFF
+        </div>
 
         {/* Quick Actions */}
         <div className="absolute top-3 right-3 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -114,11 +116,14 @@ export default function CandleCard({
         <p className="text-sm text-gray-600 mb-2 line-clamp-1">{candle.scent}</p>
 
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-gray-900">₹{candle.price}</span>
-            {candle.originalPrice && (
-              <span className="text-sm text-gray-500 line-through">₹{candle.originalPrice}</span>
-            )}
+          <div className="flex flex-col">
+            <div className="flex items-center space-x-2">
+              <span className="text-xl font-bold text-red-700">₹{dussehraPrice}</span>
+              <span className="text-sm text-gray-500 line-through">₹{candle.price}</span>
+            </div>
+            <div className="text-xs text-orange-700 font-semibold mt-1 bg-yellow-100 px-2 py-0.5 rounded-sm inline-block">
+              Dussehra Offer! ₹50 OFF
+            </div>
           </div>
         </div>
 
@@ -129,12 +134,14 @@ export default function CandleCard({
             onAddToCart(candle.id)
           }}
           className={`w-full transition-all duration-300 ${
-            isInCart ? "bg-green-600 hover:bg-green-700 text-white" : "bg-orange-600 hover:bg-orange-700 text-white"
+            isInCart 
+              ? "bg-green-600 hover:bg-green-700 text-white border-2 border-yellow-300" 
+              : "bg-gradient-to-r from-red-600 to-orange-600 hover:from-orange-600 hover:to-red-600 text-white border-2 border-yellow-300 shadow-md"
           }`}
           size="sm"
         >
           <ShoppingCart className="w-4 h-4 mr-2" />
-          {isInCart ? "Added to Cart" : "Add to Cart"}
+          {isInCart ? "Added to Cart" : "Buy Dussehra Special"}
         </Button>
       </div>
     </div>

@@ -48,33 +48,49 @@ export default function CandleCollectionSection({
   }
 
   return (
-    <section id="candle-collection-section" className="py-16 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="candle-collection-section" className="py-16 bg-gradient-to-b from-orange-50 to-white relative overflow-hidden">
+      {/* Dussehra Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-orange-600 via-yellow-500 to-red-600 opacity-90"></div>
+      <div className="absolute top-24 left-0 w-full h-4 bg-gradient-to-r from-yellow-400 via-orange-300 to-yellow-400"></div>
+      
+      {/* Decorative Diyas */}
+      <div className="absolute top-8 left-10 transform -rotate-12">
+        <div className="w-8 h-8 bg-yellow-500 rounded-full shadow-lg animate-pulse"></div>
+      </div>
+      <div className="absolute top-8 right-10 transform rotate-12">
+        <div className="w-8 h-8 bg-yellow-500 rounded-full shadow-lg animate-pulse"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 lg:px-8 pt-16">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Candle Collection</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our handcrafted candles made with premium ingredients and captivating fragrances
+        <div className="text-center mb-12 relative">
+          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-red-600"></div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-red-800 mb-4">Dussehra Special Collection</h2>
+          <p className="text-lg text-orange-800 max-w-2xl mx-auto">
+            Celebrate the victory of good over evil with our special festive candles at incredible Dussehra offers
           </p>
+          <div className="mt-4 bg-yellow-100 text-orange-800 py-2 px-4 rounded-lg inline-block font-semibold border-2 border-dashed border-orange-400">
+            Dussehra Special: All Candles ₹50 OFF!
+          </div>
         </div>
 
         {/* Filters and Sort */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
-          <div className="text-gray-600">
-            Showing {visibleCandles.length} of {sortedCandles.length} candles
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0 bg-orange-50 p-4 rounded-lg border border-orange-200">
+          <div className="text-orange-800 font-medium">
+            Showing {visibleCandles.length} of {sortedCandles.length} festive candles
           </div>
 
           <div className="flex items-center space-x-4">
-            <label htmlFor="sort" className="text-sm font-medium text-gray-700">
+            <label htmlFor="sort" className="text-sm font-medium text-orange-800">
               Sort by:
             </label>
             <select
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              className="border border-orange-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white text-orange-900"
             >
-              <option value="default">Default</option>
+              <option value="default">Dussehra Special</option>
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
               <option value="name">Name: A to Z</option>
@@ -113,8 +129,12 @@ export default function CandleCollectionSection({
             {/* Load More Button */}
             {hasMore && (
               <div className="text-center mt-12">
-                <Button onClick={loadMore} variant="outline" size="lg" className="px-8 bg-transparent">
-                  Load More Candles
+                <Button 
+                  onClick={loadMore} 
+                  size="lg" 
+                  className="px-8 bg-gradient-to-r from-orange-600 to-red-600 text-white hover:from-red-600 hover:to-orange-600 border-2 border-yellow-400 shadow-lg"
+                >
+                  Explore More Dussehra Specials
                 </Button>
               </div>
             )}
