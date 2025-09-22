@@ -111,7 +111,12 @@ export default function PromotionalBanner({
                 size="sm" 
                 variant="secondary" 
                 className="mt-2 md:mt-0 text-xs md:text-sm bg-yellow-100 text-red-600 hover:bg-yellow-200 px-6 py-1.5 h-auto rounded-full font-bold shadow-lg transform transition-transform hover:scale-105"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  const section = document.getElementById("candle-collection-section");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 <ShoppingBag className="w-3 h-3 mr-1" />
                 {actionText}
