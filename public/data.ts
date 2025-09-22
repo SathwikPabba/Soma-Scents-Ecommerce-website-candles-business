@@ -10,6 +10,63 @@ export interface Candle {
   scent: string
 }
 
+export interface NewArrival extends Candle {
+  isNew: boolean
+}
+
+export const newArrivalsData: NewArrival[] = [
+  {
+    id: "new1",
+    name: "Tulip and Daisy Candle Bouquet",
+    price: 299,
+    originalPrice: 399,
+    image: "/Tulip and Daisy Candle Bouquet main.jpg",
+    images: [
+      "/Tulip and Daisy Candle Bouquet main.jpg",
+      "/Tulip and Daisy Candle Bouquet main1.jpg",
+      "/Tulip and Daisy Candle Bouquet main2.jpg",
+      "/Tulip and Daisy Candle Bouquet main3.jpg",
+    ],
+    description: "A stunning arrangement of handcrafted tulip and daisy candles that brings the beauty of a spring garden into your home.",
+    scent: "Fresh Spring, Floral",
+    isNew: true
+  },
+  {
+    id: "new2",
+    name: "Peony Jar Candle",
+    price: 249,
+    originalPrice: 329,
+    image: "/Peony-Jar-Candle-main.jpg",
+    images: [
+      "/Peony-Jar-Candle-main.jpg",
+      "/Peony-Jar-Candle1.jpg",
+      "/Peony-Jar-Candle2.jpg",
+      "/Peony-Jar-Candle3.jpg",
+      "/Peony-Jar-Candle4.jpg",
+      "/Peony-Jar-Candle5.jpg",
+    ],
+    description: "An elegant jar candle with a sophisticated peony fragrance that fills your space with a luxurious floral aroma.",
+    scent: "Peony, Rose",
+    isNew: true
+  },
+  {
+    id: "new3",
+    name: "Floating Heart Candle Set",
+    price: 199,
+    originalPrice: 249,
+    image: "/floating-heart-candle-main.jpg",
+    images: [
+      "/floating-heart-candle-main.jpg",
+      "/floating-heart-candle1.jpg",
+      "/floating-heart-candle2.jpg",
+      "/floating-heart-candle3.jpg",
+    ],
+    description: "A set of delicate floating heart candles, perfect for creating a romantic atmosphere for special occasions.",
+    scent: "Vanilla, Jasmine",
+    isNew: true
+  }
+]
+
 export interface CartItem extends Candle {
   quantity: number
 }

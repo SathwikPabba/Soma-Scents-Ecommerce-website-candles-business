@@ -51,12 +51,12 @@ export default function HeroSection() {
     <>
       {/* Dussehra Promotional Banner */}
       <PromotionalBanner 
-        title="Dussehra Special Offers"
-        startDate="October 22nd"
-        discountPercentage={30}
+        title="Dussehra Offers Live Now"
+        startDate="Limited Time"
+        discountPercentage={40}
         collectionName="Festival Collection"
         actionText="Shop Now"
-        bgColorClass="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400"
+        bgColorClass="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500"
       />
 
       {/* Hero Section */}
